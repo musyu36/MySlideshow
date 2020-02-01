@@ -24,11 +24,11 @@ class ImageFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_image, container, false)
     }
 
-    //コンパニオンオブジェクト宣言,javaでのでのスタティックメソッド
+    //コンパニオンオブジェクト宣言,javaでのスタティックメソッド
     companion object{
         //引数にこのフラグメントの内のImageViewに表示する画像のリソースIDを取る,返り値はこのフラグメントのインスタンス
         fun newInstance(imageResourceId: Int): ImageFragment{
-            //アーギュメンツに保存するデータはBundleクラスのインスタンスを生成
+            //アーギュメンツに保存するBundleクラスのインスタンスを生成
             val bundle = Bundle()
             //格納
             bundle.putInt(IMG_RES_ID, imageResourceId)
@@ -50,7 +50,7 @@ class ImageFragment : Fragment() {
         }
     }
 
-    //onActivityrCreatedはアクティビティのonCreateが完了した後に呼び出されるライフサイクルメソッド
+    //onActivityCreatedはアクティビティのonCreateが完了した後に呼び出されるライフサイクルメソッド
     //フラグメントが作成されたらonActivityCreatedで画面の処理,
     //imgResIdに保持していた画像リソースIDよりImageViewに画像を表示する
     override fun onActivityCreated(savedInstanceState: Bundle?) {
