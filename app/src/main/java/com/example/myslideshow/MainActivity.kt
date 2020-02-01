@@ -2,10 +2,12 @@ package com.example.myslideshow
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.concurrent.timer
 
 
 class MainActivity : AppCompatActivity() {
@@ -36,6 +38,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //ViewPagerとViewAdapterを紐付け
         pager.adapter = MyAdapter(supportFragmentManager)
+
+        //タイマー処理
+        val handler = Handler()
+        //5秒に一回次のページを表示
+        timer(period = 5000){
+            handler.post{
+                pager.currentItem = (pager.currentItem + 1) % 10
+            }
+        }
     }
 }
